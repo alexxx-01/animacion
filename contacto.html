@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nike Store - Contacto</title>
+<style>
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #34495e, #2c3e50);
+    color: #ecf0f1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: rgba(0,0,0,0.85);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  header h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    user-select: none;
+  }
+  nav a {
+    color: #ecf0f1;
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding-bottom: 5px;
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+  }
+  nav a:hover, nav a.active {
+    color: #1abc9c;
+    border-bottom: 3px solid #1abc9c;
+  }
+
+  main {
+    flex: 1;
+    max-width: 700px;
+    margin: 50px auto 80px;
+    padding: 0 20px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.8rem;
+    text-shadow: 2px 2px 6px #000;
+  }
+
+  form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #0008;
+  }
+
+  label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+  }
+  input, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+  }
+  input:focus, textarea:focus {
+    outline: 3px solid #1abc9c;
+    background-color: #fff;
+    color: #000;
+  }
+  button {
+    background-color: #1abc9c;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #1abc9c;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  button:hover {
+    background-color: #16a085;
+    transform: scale(1.1);
+  }
+
+  footer {
+    background: rgba(0,0,0,0.85);
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 0.9rem;
+    box-shadow: inset 0 0 10px #000;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Nike Store</h1>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="ropa.html">Ropa</a>
+    <a href="zapatillas.html">Zapatillas</a>
+    <a href="contacto.html" class="active">Contacto</a>
+  </nav>
+</header>
+
+<main>
+  <h2>Contacto</h2>
+  <form onsubmit="return enviarFormulario(event)">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo" />
+    
+    <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" name="email" required placeholder="tu@correo.com" />
+    
+    <label for="mensaje">Mensaje:</label>
+    <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Escribe tu mensaje aquí..."></textarea>
+    
+    <button type="submit">Enviar</button>
+  </form>
+</main>
+
+<footer>
+  <p>&copy; 2025 Nike Store - Todos los derechos reservados</p>
+</footer>
+
+<script>
+  function enviarFormulario(e) {
+    e.preventDefault();
+    const nombre = document.getElementById('nombre').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mensaje = document.getElementById('mensaje').value.trim();
+    
+    if(nombre && email && mensaje) {
+      const numeroWhatsApp = '51933954238'; // Código país + número sin +
+      const texto = `Hola, me gustaría contactarme. 
+Nombre: ${nombre}
+Correo: ${email}
+Mensaje: ${mensaje}`;
+      const textoCodificado = encodeURIComponent(texto);
+      const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${textoCodificado}`;
+      window.open(urlWhatsApp, '_blank');
+      e.target.reset();
+    } else {
+      alert('Por favor completa todos los campos correctamente.');
+    }
+    return false;
+  }
+</script>
+
+</body>
+</html>

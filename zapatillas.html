@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nike Store - Zapatillas</title>
+<style>
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: rgba(0,0,0,0.75);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  header h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    user-select: none;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding-bottom: 5px;
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+  }
+  nav a:hover, nav a.active {
+    color: #f39c12;
+    border-bottom: 3px solid #f39c12;
+  }
+
+  main {
+    flex: 1;
+    max-width: 1200px;
+    margin: 50px auto 80px;
+    padding: 0 20px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.8rem;
+    text-shadow: 2px 2px 6px #000;
+  }
+
+  .productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    gap: 30px;
+  }
+
+  .producto {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 15px #000000aa;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .producto:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 30px #f39c12cc;
+  }
+
+  .producto img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    animation: girar 4s linear infinite;
+  }
+  @keyframes girar {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+  }
+
+  .producto h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+
+  .producto p {
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 15px;
+  }
+
+  .btn-comprar {
+    background-color: #f39c12;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    color: black;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 0 10px #f39c12bb;
+  }
+
+  .btn-comprar:hover {
+    background-color: #d68910;
+    transform: scale(1.1);
+  }
+
+  footer {
+    background: rgba(0,0,0,0.8);
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 0.9rem;
+    box-shadow: inset 0 0 10px #000;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Nike Store</h1>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="ropa.html">Ropa</a>
+    <a href="zapatillas.html" class="active">Zapatillas</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+</header>
+
+<main>
+  <h2>Zapatillas Nike</h2>
+  <div class="productos">
+    <div class="producto">
+      <img src="zapatillas1.png" alt="Zapatillas Nike Air Max 270" />
+      <h3>Air Max 270</h3>
+      <p>Comodidad y estilo para todo el día con la unidad Max Air.</p>
+      <button class="btn-comprar" onclick="alert('Añadido Air Max 270 al carrito')">Comprar</button>
+    </div>
+    <div class="producto">
+      <img src="zapatillas2.png" alt="Zapatillas Nike Running" />
+      <h3>Nike Running</h3>
+      <p>Perfectas para correr con soporte y amortiguación óptima.</p>
+      <button class="btn-comprar" onclick="alert('Añadido Nike Running al carrito')">Comprar</button>
+    </div>
+    <div class="producto">
+      <img src="zapatillas3.png" alt="Zapatillas Nike Court Legacy" />
+      <h3>Court Legacy</h3>
+      <p>Estilo clásico con la comodidad de la tecnología moderna.</p>
+      <button class="btn-comprar" onclick="alert('Añadido Court Legacy al carrito')">Comprar</button>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2025 Nike Store - Todos los derechos reservados</p>
+</footer>
+
+</body>
+</html>

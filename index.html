@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nike Store - Ropa y Zapatillas</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            animation: cambiarFondo 15s infinite alternate;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Fondo animado */
+        @keyframes cambiarFondo {
+            0% {background-color: #1abc9c;}
+            25% {background-color: #3498db;}
+            50% {background-color: #9b59b6;}
+            75% {background-color: #e67e22;}
+            100% {background-color: #e74c3c;}
+        }
+
+        /* Header */
+        header {
+            background: rgba(0,0,0,0.6);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #fff;
+            user-select: none;
+            animation: parpadear 2s infinite;
+        }
+
+        @keyframes parpadear {
+            0%, 100% {opacity: 1;}
+            50% {opacity: 0.3;}
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #1abc9c;
+        }
+
+        /* Sección principal */
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Contenedor para centrar las secciones de productos */
+        .productos-contenedor {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+            animation: latirCorazon 1.5s infinite;
+            display: inline-block;
+        }
+
+        @keyframes latirCorazon {
+            0%, 100% {transform: scale(1);}
+            50% {transform: scale(1.2);}
+        }
+
+        .intro p {
+            font-size: 1.3rem;
+            color: #eee;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Galería productos */
+        .productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .producto {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px #00000066;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .producto:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #1abc9c;
+        }
+
+        .producto img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            animation: rebote 3s infinite ease-in-out;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            background: #fff;
+            object-fit: contain;
+        }
+
+        @keyframes rebote {
+            0%, 100% {transform: translateY(0);}
+            50% {transform: translateY(-20px);}
+        }
+
+        .producto h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .producto p {
+            font-size: 1rem;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .btn-comprar {
+            background-color: #e74c3c;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-comprar:hover {
+            background-color: #3498db;
+            transform: scale(1.1);
+        }
+
+        /* Cuadrado animado en footer */
+        footer {
+            background: rgba(0,0,0,0.7);
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .cuadrado {
+            width: 60px;
+            height: 60px;
+            background-color: red;
+            animation: cambiarColor 4s infinite alternate;
+            border-radius: 12px;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @keyframes cambiarColor {
+            0% {background-color: red;}
+            50% {background-color: blue;}
+            100% {background-color: green;}
+        }
+
+        /* Botón flotante animado */
+        .btn-flotante {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 18px 25px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 15px #e74c3c;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            animation: parpadear 3s infinite;
+        }
+
+        .btn-flotante:hover {
+            background-color: #3498db;
+            transform: scale(1.15);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Nike Store</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="ropa.html">Ropa</a>
+            <a href="zapatillas.html">Zapatillas</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Bienvenido a Nike Store <span style="color:#e74c3c;">&#10084;</span></h2>
+            <p>Encuentra la mejor ropa y zapatillas Nike con diseños innovadores y calidad insuperable.</p>
+        </section>
+
+        <div class="productos-contenedor">
+            <section id="ropa" class="productos">
+                <h2 style="grid-column: 1 / -1; color:#fff; margin-bottom: 20px;">Ropa Nike</h2>
+
+                <div class="producto">
+                    <img src="principal1.png" alt="Camiseta Nike" />
+                    <h3>Camiseta Nike Dri-FIT</h3>
+                    <p>Material transpirable para mantenerte seco y cómodo.</p>
+                    <button class="btn-comprar" onclick="mostrarAlerta('Camiseta Nike Dri-FIT')">Comprar</button>
+                </div>
+
+                <div class="producto">
+                    <img src="principal2.png" alt="Shorts Nike" />
+                    <h3>Shorts Nike Essential</h3>
+                    <p>Perfectos para entrenamiento y uso diario.</p>
+                    <button class="btn-comprar" onclick="mostrarAlerta('Shorts Nike Essential')">Comprar</button>
+                </div>
+
+                <div class="producto">
+                    <!-- Imagen generada con estilo similar, placeholder en base64 -->
+                    <img src="principal5.png" alt="Sudadera Nike Sport" />
+                    <h3>Sudadera Nike Sport</h3>
+                    <p>Comodidad y estilo para todo el día.</p>
+                    <button class="btn-comprar" onclick="mostrarAlerta('Sudadera Nike Sport')">Comprar</button>
+                </div>
+            </section>
+
+            <section id="zapatillas" class="productos" style="margin-top: 60px;">
+                <h2 style="grid-column: 1 / -1; color:#fff; margin-bottom: 20px;">Zapatillas Nike</h2>
+
+                <div class="producto">
+                    <img src="principal3.png" alt="Zapatillas Nike Air Max" />
+                    <h3>Zapatillas Nike Air Max</h3>
+                    <p>Comodidad y estilo en cada paso.</p>
+                    <button class="btn-comprar" onclick="mostrarAlerta('Zapatillas Nike Air Max')">Comprar</button>
+                </div>
+
+                <div class="producto">
+                    <img src="principal4.png" alt="Zapatillas Nike Running" />
+                    <h3>Zapatillas Nike Running</h3>
+                    <p>Diseño aerodinámico para un mejor rendimiento.</p>
+                    <button class="btn-comprar" onclick="mostrarAlerta('Zapatillas Nike Running')">Comprar</button>
+                </div>
+
+                <div class="producto">
+                    <!-- Imagen generada con estilo similar, placeholder en base64 -->
+                    <img src="principal6.png" alt="Zapatillas Nike Zoom" />
+                    <h3>Zapatillas Nike Zoom</h3>
+                    <p>Ligereza y velocidad para tus entrenamientos.</p>
+                    <button class="btn-comprar" onclick="mostrarAlerta('Zapatillas Nike Zoom')">Comprar</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <button class="btn-flotante" onclick="abrirWhatsApp()">Contáctanos</button>
+
+    <footer>
+        <div class="cuadrado"></div>
+        <p>&copy; 2025 Nike Store - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        function mostrarAlerta(producto) {
+            alert(`Has agregado al carrito: ${producto}`);
+        }
+
+        function abrirWhatsApp() {
+            const numero = '933954238'; // Número de WhatsApp sin espacios ni símbolos
+            const url = `https://wa.me/${numero}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
